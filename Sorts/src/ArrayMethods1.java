@@ -41,33 +41,36 @@ public class ArrayMethods1 {
 			key = list1[i]; // variable key contains element in position i
 			j = i - 1; // variable j is 1 less than i
 			while((j>=0)&&(list1[j] > key)) { // while the number before is greater than the element contained in key,
-				SwapInt(list1, j+1, j); // switch the values
+				SwapInt(list1, j+1, j); // swaps the values
 				j = j - 1; // value of j decreases, making them check the elements before
 			}
 			list1[j+1] = key; // sets the value in the position of j+1 as key
 		}
 	}
 	
+	// http://www.java2novice.com/java-sorting-algorithms/selection-sort/
 	public static void selectionSort(double[] list2) {
-		int x = 0;
-		int y = 0;
-		for(int j = 0; j < list2.length;j++) {
-			for(int i = 1; i < list2.length; i++) {
-				if(list2[x]>list2[i]) {
-					x=i;
-				}
-			}
-			SwapDouble(list2,y,x);
-			y++;
-		}
+        for (int i = 0; i < list2.length - 1; i++) { // for loop to go through all elements in array
+            int index = i; // initialize index equal to the number in the beginning
+            for (int j = i + 1; j < list2.length; j++) { // for loop to compare the number to elements in array
+                if (list2[j] < list2[index]) { // if the number is less than the index number
+                    index = j; // then that number's position is now the index
+                }
+            }
+            SwapDouble(list2, index, i); // swap the numbers
+        }
 	}
 	
+	// https://www.geeksforgeeks.org/bubble-sort/
 	public static void bubbleSort(String[] list3) {
-		for(int i = 1; i < list3.length; i++) {
-			if(list3[i-1]>list3[i]) {
-				
-			}
-		}
+        int n = list3.length; // initializes n as list3's length
+        for (int i = 0; i < n-1; i++) { // repeats the for loop below until it gets to the end
+            for (int j = 0; j < n-i-1; j++) { // for loop to go through all elements in array
+                if (list3[j].compareTo(list3[j+1])>0) { // compares the two strings
+                	SwapString(list3,j,j+1); // swaps the strings
+                }
+            }
+        }
 	}
 	
 	public static void SwapInt(int[] arr, int index, int index2) {
